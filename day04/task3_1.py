@@ -1,50 +1,26 @@
 import string
 
-# user_str = input("What message would you encrypt ?\n")
-# encryption_key = int(input("Now, what's your key for the encryption ? [1 - 25]\n"))
-user_str = "je m'appelle"
-encryption_key = 24
-alpha_list = list(string.ascii_lowercase)
-# convertion de list à dict pour l'alphabet
-alphabet = dict()
-i = 0
-for char in alpha_list:
-    alphabet[char] = i
-    i += 1
+# Prompt the user for a clear message and a key. Then, use Caesar cipher to encrypt the clear message with
+# the key. Finally, print the encrypted message.
 
-# On lower la string pour etre certain de ne pas avoir de prb
-user_str = user_str.lower()
-char_value = 0
-final_str = ""
-for char in user_str:
-    if char in string.ascii_lowercase:
-        # ici je transforme la lettre en chiffre (valeure du dict)
-        char_value = int(alphabet.get(char))  # Recuperation de la valeure de la lettre
-        if char_value - encryption_key < 0:
-            char_value = (char_value + 25) - encryption_key
-            final_str += str(alphabet.get(char_value))
+
+def encode_caesar_cipher():
+    user_str = input("Give a string to encode:\n")
+    encryption_key = int(input("Give a key between 1 and 25:\n"))
+    alphabet_list = list(string.ascii_lowercase)
+    encoded_str = ""
+    for char in user_str.lower():
+        if char in alphabet_list:
+            char_value = alphabet_list.index(char)
+            if char_value + encryption_key > 25:
+                encoded_str += alphabet_list[(char_value - 26) + encryption_key]
+            else:
+                encoded_str += alphabet_list[char_value + encryption_key]
         else:
-            final_str = alphabet.get(str(char_value - encryption_key))
-    elif char not in string.ascii_lowercase:
-        final_str += char
+            encoded_str += char
+
+    print(f"Your original string: {user_str}")
+    print(f"Your encoded string: {encoded_str} with a key of {encryption_key}")
 
 
-print(final_str)
-
-# Mtn j'ai l'alphabet avec des valeurs je peux comparer chaqu'une des valeures
-# Pour gérer les espaces je vais utiliser split
-# Il faudra aussi gérer la ponctuation ".'!?"... Mais on le fera apres
-
-
-# def encrypt_msg(user_str, encryption_key):
-#     msg_len = len(user_str)
-#     encrypted_str = ""
-#     for char in user_str:
-#         char = ALPHABET[encryption_key + 1]
-#         encrypted_str += char
-#     print(f"Your encrypted message is:\n {encrypted_str}")
-
-
-# encrypt_msg(user_str, encryption_key)
-
-# A FAIRE : Gérer les espaces dans le message (passer sur une liste serait plus pratique ?)
+encode_caesar_cipher()

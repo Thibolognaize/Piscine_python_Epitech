@@ -1,3 +1,5 @@
+# Generate the lyrics of the song ”99 bottles of beer”.
+# The songs ends when there is no more bottles on the wall.
 bottle_s = "bottles"
 for i in range(99, 0, -1):
     if i == 1:

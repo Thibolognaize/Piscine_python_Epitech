@@ -1,4 +1,5 @@
-# (42 > 12) => True 
+# Evaluate and explain the following lines:
+# (42 > 12) => True
 # (12 = 12) => Error
 # (12 == 12) => True
 # (”hello” == ”world”) => False
