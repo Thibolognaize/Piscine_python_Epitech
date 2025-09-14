@@ -1,3 +1,4 @@
+# Create a list of 1000000 random integers. Then, sort this list as fast as possible.
 import time
 import random
 

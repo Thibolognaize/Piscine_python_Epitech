@@ -1,3 +1,5 @@
+# Store this dictionary into the variable superheroes.
+# Then, print the value of Superman's city.
 superheroes = {
     "Batman": {
         "id": 1,

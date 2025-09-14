@@ -1,3 +1,4 @@
+# Test this code and try to explain it:
 first_names = [" Jackie ", " Chuck ", " Arnold ", " Sylvester "]
 last_names = [" Stallone ", " Schwarzenegger ", " Norris ", " Chan "]
 magic = [*zip(first_names, last_names[::-1])]

@@ -1,3 +1,4 @@
+# Inside the previous dictionary superheroes, add Caped Crusader inside Batman's aliases.
 superheroes = {
     "Batman": {
         "id": 1,

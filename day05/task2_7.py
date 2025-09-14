@@ -1,3 +1,4 @@
+# Test this code and try to explain it: [*enumerate([42, 3, 4, 18, 3, 10])]
 m = [enumerate([42, 3, 4, 18, 3, 10])]
 print(m)
 

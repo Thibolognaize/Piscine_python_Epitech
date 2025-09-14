@@ -1,3 +1,5 @@
+# Add the integer 42 at the end of your list.
+Then, add the string forty-two at the end of your list.
 my_list = [x for x in range(1, 6)]
 my_list.append(42)
 my_list.append("forty-two")
