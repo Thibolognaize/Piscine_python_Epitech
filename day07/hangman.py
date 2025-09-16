@@ -1,5 +1,6 @@
 import random
 import os
+import string
 from english_words import get_english_words_set
 
 
@@ -50,7 +51,7 @@ def choose_gamemode(user_input):
     if int(user_input) == 1 or user_input.lower() == "random":
         # RENTRE DANS LE MODE DE JEU AVEC RANDOM
         word_to_guess = random_choice()
-        return word_to_guess
+        return word_to_guess.lower()
 
     if int(user_input) == 2 or user_input.lower() == "choose a word":
         # RENTRE DANS LE MODE DE JEU AVEC CHOOSE
@@ -60,7 +61,7 @@ def choose_gamemode(user_input):
             os.system("clear")
         else:
             word_to_guess = input("Write a new word: ")
-        return word_to_guess
+        return word_to_guess.lower()
 
 
 def clear_term():
@@ -69,6 +70,8 @@ def clear_term():
 
 def hangman_game():
     started = True
+
+    clear_term()
 
     user_input = intro_hangman()
 
@@ -81,23 +84,39 @@ def hangman_game():
     guesses = []
     good_answ = 0
     wrong_answ = 0
+
     while started:
-        print(f"Round: {round}")
+        print(f"Try left: {10 - wrong_answ}")
 
         if len(guesses) != 0:
             print(f"You guessed: {guesses}")
+
+        # Montre le mot peu à peu deviné
         print(f"\n{empty_spaces(word_to_guess, guesses)}")
-        user_guess = input("\nTake a guess:\n").lower()
-        guesses += user_guess
+        ask = True
+        # Demande un guess
+        while ask:
+            user_guess = input("\nTake a guess:\n").lower()
+            if user_guess == " ":
+                print("\nPlease answer a valid guess ! 🤬 ")
+                ask = True
+                clear_term()
+            elif user_guess in guesses:
+                print("\nYou've already tried it, AHAH... 🥲 ")
+            elif user_guess in string.punctuation:
+                print("\nThere is no chance that this character is in your word ! 🧐 ")
+            else:
+                ask = False
+        guesses += user_guess[0]
 
         # Compte les bonnes réponses
         if user_guess in word_to_guess:
             count = word_to_guess.count(user_guess)
-            print(f"Well played ! You guessed the letter '{user_guess}'")
+            print(f"Well played ! You guessed the letter '{user_guess}' ✅")
             good_answ += count
         else:
             print(f"EEEeer !! Wrong one for '{user_guess}'")
-            wrong_answer += 1
+            wrong_answ += 1
 
         round += 1
 
@@ -110,11 +129,16 @@ def hangman_game():
         if good_answ == len(word_to_guess):
             started = False
             print("You win ! Well played !! 🥳 ")
-            print(f"You guessed the word: {word_to_guess}")
+            print(f"You guessed the word: {word_to_guess.capitalize()}")
         if wrong_answ >= 10:
             started = False
-            print("You loose")
+            print("You loose 👎 ")
+            print(f"The word was {word_to_guess.capitalize()} 🤭 ")
 
+
+# PENSER A AJOUTER LE MOT EN CAS DE DEFAITE => Fait
+# PENSER A AJOUTER LE NOMBRE DE TRY RESTANTS => Fait
+# Resoudre le bug de si on ajoute une meme lettre cela resoud le jeu
 
 hangman_game()
 # Pseudo-code :
