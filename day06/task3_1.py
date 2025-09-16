@@ -4,7 +4,7 @@ special = set(punctuation)
 
 
 def funA(s, n):
-    return len(s) == n
+    return len(s) >= n
 
 
 def funB(s, n):
