@@ -1,13 +1,23 @@
 import random
 import os
 import string
+import sys
 from english_words import get_english_words_set
 
 
 # random_choice renvoie un mot aléatoire
 def random_choice():
-    web2lowerset = get_english_words_set(["web2"], lower=True)
-    random_word = random.choice(list(web2lowerset))
+    if len(sys.argv) == 2:
+        filename = sys.argv[1]
+        print(filename)
+        word_list = []
+        with open(filename) as file:
+            for line in file:
+                word_list.append(line.rstrip())
+        random_word = random.choice(word_list)
+    else:
+        web2lowerset = get_english_words_set(["web2"], lower=True)
+        random_word = random.choice(list(web2lowerset))
     return random_word
 
 
@@ -203,7 +213,7 @@ def main(word_to_guess):
 
 # hangman_game est le jeu complet
 def hangman_game():
-    clear_term()
+    # clear_term()
 
     user_input = intro_hangman()
 
