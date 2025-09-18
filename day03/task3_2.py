@@ -1,3 +1,5 @@
+# Prompt the user for a number.
+# Then, print the type of the provided input.
 number = input("Give a number")
 print(type(number))
 

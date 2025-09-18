@@ -1,7 +1,8 @@
+# Can you predict the result of the following snippet of code?
 p = "abcdefghij"
-print (p [:: -2][:5][:: -1][3:])
+print(p[::-2][:5][::-1][3:])
 
-# Premier [] : extrait de 2 en 2 a partir de la fin 
+# Premier [] : extrait de 2 en 2 a partir de la fin
 # return => "jhfdb"
 # Second [] : prends les 5 premiers car.
 # return => "jhfdb"

@@ -1,3 +1,4 @@
+# Explain the following code and predict its output. Then, test your prediction by running the code.
 string = "Hello world!"
 position = string.find("a")
 print(position)
