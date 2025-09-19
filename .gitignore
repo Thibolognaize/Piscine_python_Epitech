@@ -1,7 +1,4 @@
 .vscode/
-*/.venv/
 .venv
-*/__pycache__/
-__pycache/
-*/test.py
-test.py
+__pycache__/
+test*.py
